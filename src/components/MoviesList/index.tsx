@@ -1,6 +1,4 @@
 import React, { useEffect, useState, useContext } from 'react';
-import axios from 'axios';
-import Movie from '../../types/Movie/Movie';
 import Card from '../Card';
 import Grid from '@mui/material/Grid';
 import Modal from '../Modal';

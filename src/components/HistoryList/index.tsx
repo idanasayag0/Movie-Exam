@@ -1,16 +1,20 @@
+import React, { useContext } from "react";
+
 import Style from "./style.module.css";
 
-import Data from "../../data/test.json";
 import GenericGrid from "../common/GenericGrid";
 import HistoryCard from "../HistoryCard";
+import { MovieContext } from "../MovieProvider";
+
 
 const HisotryList = () => {
-  const data1 = [...Data].splice(0, 3);
+  const { history,movies } = useContext(MovieContext);
+  const historyMovies = movies.filter((movie) => history.includes(movie.id));
 
   return (
     <>
       <h1 className={Style.header}>History</h1>
-      <GenericGrid items={data1} component={HistoryCard} />
+      <GenericGrid items={historyMovies} component={HistoryCard} />
     </>
   );
 };
