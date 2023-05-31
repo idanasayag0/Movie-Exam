@@ -10,8 +10,11 @@ import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 import BookmarkRemoveIcon from '@mui/icons-material/BookmarkRemove';
 import Badge from '@mui/material/Badge';
 import { useNavigate } from 'react-router-dom';
+import React, {useContext} from 'react';
+import { MovieContext } from '../MovieProvider';
 
 const Card = ({movie, openModal} :CardProps) =>{
+    const {toggleFavorite, favorite} = useContext(MovieContext)
     const navigate = useNavigate()
 
     const goNavigate = ()=>{
@@ -35,7 +38,7 @@ const Card = ({movie, openModal} :CardProps) =>{
         </Typography>
       </CardContent>
       <CardActions >
-        <Button  size="small">{<BookmarkAddIcon/>}</Button>
+        <Button onClick={()=>{toggleFavorite(movie.id)}} size="small">{favorite.includes(movie.id)? <BookmarkRemoveIcon/> : <BookmarkAddIcon/>}</Button>
         <Button onClick={goNavigate} size="small"><ShoppingCartIcon /></Button>
       </CardActions>
     </CardM>

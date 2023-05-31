@@ -10,6 +10,7 @@ import HomePage from "./pages/HomePage";
 import OrderPage from "./pages/OrderPage";
 import HistoryPage from "./pages/HistoryPage";
 import './App.css';
+import { MovieProvider } from './components/MovieProvider';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,7 +23,11 @@ const router = createBrowserRouter(
 );
 
 const App = ()=>{
-  return <RouterProvider router={router} />;
+  return(
+    <MovieProvider>
+      <RouterProvider router={router} />
+    </MovieProvider>
+  ) 
 }
 
 export default App;

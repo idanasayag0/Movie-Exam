@@ -1,15 +1,17 @@
-import Data from "../../data/data";
 import GenericGrid from "../common/GenericGrid";
 import FavoriteCard from "../FavoriteCard";
+import { MovieContext } from "../MovieProvider";
+import React, { useContext } from "react";
+
 
 const FavoriteList = () => {
-  
-  const data2 = [...Data].splice(3, 11);
+  const { favorite, movies } = useContext(MovieContext);
+  const favoriteMovies = movies.filter((movie) => favorite.includes(movie.id));
 
   return (
     <>
       <h1>Favorite</h1>
-      <GenericGrid items={data2} component={FavoriteCard} />
+      <GenericGrid items={favoriteMovies} component={FavoriteCard} />
     </>
   );
 };
