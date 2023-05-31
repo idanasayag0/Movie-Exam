@@ -1,20 +1,17 @@
 import React, {useEffect, useState, useContext} from "react";
+import ReactPlayer from 'react-player';
 import { useParams } from "react-router-dom";
-import PeopleIcon from '@mui/icons-material/People';
-import Movie from '../../types/Movie/Movie'
+
 import axios from 'axios'
-import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import CardMedia from '@mui/material/CardMedia';
-import CardM from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
+
+import { CardContent, Input } from "@mui/joy";
+import PeopleIcon from '@mui/icons-material/People';
+import {Button, Container, Typography, CardMedia, Card as CardM} from '@mui/material';
+
+import { MovieContext } from "../../components/MovieProvider";
 import Loader from '../../components/common/Loader/Loader';
 import Style from './style.module.css';
-import { MovieContext } from "../../components/MovieProvider";
-import Input from '@mui/joy/Input';
-import ReactPlayer from 'react-player';
+import Movie from '../../types/Movie/Movie'
 
 const OrderPage = () => {
   const {id} = useParams<{id: string}>();
