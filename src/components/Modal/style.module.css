@@ -1,0 +1,65 @@
+body .active_modal {
+  overflow-y: hidden;
+}
+.btn_modal {
+  padding: 0.6rem 1rem;
+  display: block;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.modal,
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+.overlay {
+  background-color: rgba(49, 49, 49, 0.8);
+}
+.modal {
+  z-index: 20000;
+}
+.modal_content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  border-radius: 0.3rem;
+  max-width: 600px;
+  min-width: 300px;
+  background: white;
+  overflow: hidden;
+}
+.modal_content p,
+.model_title {
+  color: black;
+}
+.close_modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.2rem 0.25rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+}
+
+.close_modal:hover {
+  background: orangered;
+  color: white;
+}
+
+.posterImage {
+  width: 100%;
+  max-height: 380px;
+}
+
+.description {
+  padding: 1rem;
+}
