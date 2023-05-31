@@ -18,7 +18,7 @@ const Card = ({movie, openModal} :CardProps) =>{
     const navigate = useNavigate()
 
     const goNavigate = ()=>{
-        navigate(`/order/${movie.id}`)
+        navigate('/order/'+ movie.id)
     }
 
   return (

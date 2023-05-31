@@ -13,6 +13,8 @@ import CardContent from '@mui/material/CardContent';
 import Loader from '../../components/common/Loader/Loader';
 import Style from './style.module.css';
 import { MovieContext } from "../../components/MovieProvider";
+import Input from '@mui/joy/Input';
+import ReactPlayer from 'react-player';
 
 const OrderPage = () => {
   const {id} = useParams<{id: string}>();
@@ -38,19 +40,11 @@ const OrderPage = () => {
   // }, []);
 
   
-/*
-1.	תמונת כרזה 
-2.	תיאור הסרט
-3.	שנת יציאה
-4.	מגבלת גיל (מעל 18)
-5.	טריילר של הסרט (במידה ויש)
-6.	כמות כרטיסים להזמנה
-7.	כפתור הזמנה – לאחר לחיצה על הכפתור ישתנה המסך ל: תודה שהזמנת אצלנו ולאחר כ10 ש' יועבר אוטומטית לדף הראשון
-*/
   return (
+    <>
       <CardM sx={{display: "flex", padding: 0}}>
         <CardMedia
-          sx={{ height: 300, width: "100%", objectFit: "contain", aspectRatio: 3/2}}
+          sx={{ height: 300, width: 350, objectFit: "contain", aspectRatio: 3/2}}
           image="https://picsum.photos/200"
           title="title"
         />
@@ -62,15 +56,20 @@ const OrderPage = () => {
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est quod sed eligendi provident et, sint nostrum, rerum hic unde mollitia ipsam, qui commodi? Harum quam cum hic quidem qui molestias.
                   Veritatis dolor nostrum expedita, esse, odio rem di
                 </Typography>
-                <p className="release_date">Release date: 00-00-00</p>
+                <p className={Style.release_date}>Release date: 00-00-00</p>
             <div className={Style.icons}>
                 <PeopleIcon sx={{marginRight: "0.5rem"}} /> {false ? "18+" : "For all family"}
             </div>
-            <div className="buttons">
+            <div className={Style.buttons}>
               <Button onClick={()=>addToHistory(parseInt(id))} variant="outlined">Order</Button>
             </div>
+            <Input sx={{width: "10%"}} defaultValue={1} slotProps={{input:{min:1}}}  placeholder="Type in here…" variant="outlined" color="primary" type="number" />         
         </CardContent>
       </CardM>
+      <Container sx={{display: "flex", justifyContent: "center", marginTop: "5rem"}}>
+        <ReactPlayer url="https://www.youtube.com/watch?v=cfqpDgnZLoM&ab_channel=DeepSoundStudios" controls={true} />
+      </Container>
+    </>
   )
 }
 
