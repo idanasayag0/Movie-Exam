@@ -3,7 +3,8 @@
   justify-content: end;
   gap: 1rem;
   align-items: center;
-  margin: 0 1rem 0 0;
+  margin: 1rem auto;
+  max-width: 1700px;
 }
 
 .container h2 {

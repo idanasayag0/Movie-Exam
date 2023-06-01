@@ -31,7 +31,7 @@ const OrderPage = () => {
     addToHistory(parseInt(id), currentDate.join('-'));
     setTimeout(() => {
       navigate(SEARCH_PAGE_PATH)
-    },3000);
+    },10000);
   }
 
   const openModal = ()=>{
@@ -66,7 +66,7 @@ const OrderPage = () => {
       <Loader isLoading={isLoading}>
       {!isLoading && 
       <>
-        <CardM sx={{display: "flex", maxWidth: 1800, margin: "0 auto"}}>
+        <CardM sx={{display: "flex", maxWidth: 1800, margin: "0 auto", boxShadow: 0}}>
           <CardMedia
             sx={{ height: 300, width: 350, objectFit: "contain", aspectRatio: 3/2}}
             image={`${IMAGE_URL}${movie.poster_path}`}

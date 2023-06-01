@@ -4,7 +4,6 @@ import GenericGrid from "../common/GenericGrid";
 import FavoriteCard from "../FavoriteCard";
 import { MovieContext } from "../MovieProvider";
 
-
 const FavoriteList = () => {
   const { favorite, movies } = useContext(MovieContext);
   const favoriteMovies = movies.filter((movie) => favorite.includes(movie.id));
@@ -12,7 +11,7 @@ const FavoriteList = () => {
   return (
     <>
       <h1>Favorite</h1>
-      <GenericGrid items={favoriteMovies} component={FavoriteCard} />
+        <GenericGrid items={favoriteMovies} component={FavoriteCard} />
     </>
   );
 };
