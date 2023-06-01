@@ -8,6 +8,7 @@ type Movie = {
     adult: boolean;
     video?: string | boolean;
     [key: string]: any;
+    purchase_date?: string;
 }
 
 export default Movie;

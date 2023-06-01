@@ -8,7 +8,7 @@ type GlobalContent = {
   favorite: number[],
   page: number,
   setPage: (p: number) => void,
-  addToHistory: (id: number) => void,
+  addToHistory: (id: number, purchase_date:string) => void,
   toggleFavorite: (id: number) => void
 }
 
@@ -45,7 +45,18 @@ const MovieProvider = ({children}) => {
     }
   };
 
-  const addToHistory = (id: number) => {
+  const addToHistory = (id: number, purchase_date:string) => {
+    const updatedMovie = movies.find((movie) => movie.id === id)
+    updatedMovie.purchase_date = purchase_date;
+    setMovies((prevMovie)=> {
+      return prevMovie.map((movie) => {
+        if(movie.id === id){
+          return updatedMovie;
+        } else {
+          return movie;
+        }
+      })
+    });
     setHistory((prevHistory) => [...prevHistory, id]);
   };
 

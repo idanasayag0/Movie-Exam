@@ -22,7 +22,8 @@ const OrderPage = () => {
   const navigate = useNavigate();
 
   const navigateTo = () => {
-    addToHistory(parseInt(id));
+    const currentDate = new Date().toLocaleString().split(',')[0];
+    addToHistory(parseInt(id), currentDate);
     setTimeout(() => {
       navigate('/')
     },10000);
@@ -69,8 +70,9 @@ const OrderPage = () => {
                   <div className={css["icons"]}>
                     <PeopleIcon sx={{marginRight: "0.5rem"}} /> {movie.adult ? "18+" : "For all family"}
                   </div>
-              <Input sx={{width: "10%"}} defaultValue={1} slotProps={{input:{min:1}}}  placeholder="Type in here…" variant="outlined" color="primary" type="number" />         
+              
               <div className={css["buttons"]}>
+              <Input sx={{width: "10%", marginRight: "1rem"}} defaultValue={1} slotProps={{input:{min:1}}}  placeholder="Type in here…" variant="outlined" color="primary" type="number" />         
                 <Button onClick={navigateTo} variant="outlined">Order</Button>
               </div>
           </CardContent>
