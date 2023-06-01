@@ -38,10 +38,6 @@ const OrderPage = () => {
     setModalOpen(true);
   }
 
-  const closeModal = ()=>{
-    setModalOpen(false);
-  }
-
   const handleClick = ()=>{
     openModal();
     navigateTo();
