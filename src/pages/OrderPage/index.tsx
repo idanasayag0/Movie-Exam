@@ -13,13 +13,13 @@ import Loader from '../../components/common/Loader/Loader';
 import css from './style.module.css';
 import Movie from '../../types/Movie/Movie'
 import Modal from "../../components/Modal";
+import { SEARCH_PAGE_PATH, API_KEY, IMAGE_URL } from "../../constants";
 
 const OrderPage = () => {
   const {id} = useParams<{id: string}>();
   const {addToHistory} = useContext(MovieContext);
   const [movie, setMovie] = useState<Movie>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [trailer, setTrailer] = useState<string>("");
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const navigate = useNavigate();
 
@@ -30,7 +30,7 @@ const OrderPage = () => {
 
     addToHistory(parseInt(id), currentDate.join('-'));
     setTimeout(() => {
-      navigate('/')
+      navigate(SEARCH_PAGE_PATH)
     },3000);
   }
 
@@ -43,21 +43,20 @@ const OrderPage = () => {
     navigateTo();
   }
 
-  const fetchMovie = async () => {
-    try {
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=d668792fe63acf6c75fbdbee01b8ee19&append_to_response=videos`
-      );
-      const fetchedMovie = response.data;
-      setTrailer(fetchedMovie.videos.results[0].key);
-      setMovie(fetchedMovie);
-      setIsLoading(false);
-    } catch (error) {
-      console.error('Error fetching movie:', error);
-    }
-  };
-
   useEffect(() => {
+    const fetchMovie = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=videos`
+        );
+        const fetchedMovie = response.data;
+        setMovie(fetchedMovie);
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error fetching movie:', error);
+      }
+    };
+
     fetchMovie();
   }, []);
 
@@ -70,7 +69,7 @@ const OrderPage = () => {
         <CardM sx={{display: "flex", maxWidth: 1800, margin: "0 auto"}}>
           <CardMedia
             sx={{ height: 300, width: 350, objectFit: "contain", aspectRatio: 3/2}}
-            image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            image={`${IMAGE_URL}${movie.poster_path}`}
             title={movie.title}
           />
            <CardContent sx={{padding: "0 2rem",display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
@@ -92,7 +91,7 @@ const OrderPage = () => {
           </CardContent>
         </CardM>
         <Container sx={{display: "flex", justifyContent: "center", marginTop: "5rem"}}>
-            <ReactPlayer url={`https://www.youtube.com/watch?v=${trailer}`} controls={true} />
+            <ReactPlayer url={`https://www.youtube.com/watch?v=${movie.videos.results[0].key}`} controls={true} />
           </Container>
         </>
       }

@@ -1,0 +1,5 @@
+export const SEARCH_PAGE_PATH = '/'
+export const ORDER_PAGE_PATH = '/order/'
+export const HISTORY_PAGE_PATH = '/history'
+export const API_KEY = 'd668792fe63acf6c75fbdbee01b8ee19'
+export const IMAGE_URL = 'https://image.tmdb.org/t/p/w500'

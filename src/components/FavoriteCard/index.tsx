@@ -1,20 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import React, { useContext } from "react";
 
-import CardActions from "@mui/material/CardActions";
-import Button from "@mui/material/Button";
-import BookmarkRemoveIcon from "@mui/icons-material/BookmarkRemove";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import {CardActions, Button} from "@mui/material";
+import {BookmarkRemove, ShoppingCart} from "@mui/icons-material";
 
 import GenericCard from "../GenericCard";
 import { MovieContext } from "../MovieProvider";
+import { ORDER_PAGE_PATH } from "../../constants";
 
 
 const FavoriteCard = ({ item }) => {
   const navigate = useNavigate();
   const { toggleFavorite } = useContext(MovieContext);
   const navitateTo = () => {
-      navigate("/order/" + item.id);
+      navigate(`${ORDER_PAGE_PATH}${item.id}`);
   };
 
   return (
@@ -22,9 +21,9 @@ const FavoriteCard = ({ item }) => {
       item={item}
       component={() => (
         <CardActions>
-          <Button onClick={()=>toggleFavorite(item.id)} size="small">{<BookmarkRemoveIcon />}</Button>
+          <Button onClick={()=>toggleFavorite(item.id)} size="small">{<BookmarkRemove />}</Button>
           <Button onClick={navitateTo} size="small">
-            <ShoppingCartIcon />
+            <ShoppingCart />
           </Button>
         </CardActions>
       )}

@@ -1,7 +1,10 @@
 import React, {useState, createContext, useEffect} from 'react'
 
-import Movie from '../../types/Movie/Movie'
 import axios from 'axios'
+
+import Movie from '../../types/Movie/Movie'
+import { API_KEY } from '../../constants'
+
 type GlobalContent = {
   movies: Movie[],
   history: number[],
@@ -36,7 +39,7 @@ const MovieProvider = ({children}) => {
   const fetchMovies = async () => {
     try {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/movie/now_playing?api_key=d668792fe63acf6c75fbdbee01b8ee19&page=${page}`
+        `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&page=${page}`
       );
       const fetchedMovies = response.data.results;
       setMovies((prevMovies) => [...prevMovies, ...fetchedMovies]);

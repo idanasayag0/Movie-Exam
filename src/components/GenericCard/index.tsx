@@ -1,10 +1,7 @@
-import CardM from "@mui/material/Card";
-import Box from "@mui/material/Box";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import CardMedia from "@mui/material/CardMedia";
-import Badge from "@mui/material/Badge";
+import {Box, CardContent, Typography, CardMedia, Badge, Card as CardM} from "@mui/material";
 
+
+import { IMAGE_URL } from "../../constants";
 import Movie from "../../types/Movie/Movie";
 
 type GenericMovieCardProps = {
@@ -40,7 +37,7 @@ const GenericCard = ({ item, component: Component }: GenericMovieCardProps) => {
         <CardMedia
           component="img"
           sx={{ width: 150 }}
-          image={`https://image.tmdb.org/t/p/w500${item.backdrop_path}`}
+          image={`${IMAGE_URL}${item.backdrop_path}`}
           alt={item.title}
         />
       </CardM>

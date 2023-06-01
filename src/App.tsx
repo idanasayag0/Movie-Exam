@@ -5,6 +5,13 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+
+import {
+  SEARCH_PAGE_PATH,
+  ORDER_PAGE_PATH,
+  HISTORY_PAGE_PATH,
+} from './constants';
+
 import Navbar from './components/Navbar';
 import HomePage from "./pages/HomePage";
 import OrderPage from "./pages/OrderPage";
@@ -14,10 +21,10 @@ import { MovieProvider } from './components/MovieProvider';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Navbar />}>
+    <Route path={SEARCH_PAGE_PATH} element={<Navbar />}>
       <Route index element={<HomePage />}/>
-      <Route path="/order/:id" element={<OrderPage />} />
-      <Route path="/history" element={<HistoryPage />} />
+      <Route path={`${ORDER_PAGE_PATH}:id`} element={<OrderPage />} />
+      <Route path={HISTORY_PAGE_PATH} element={<HistoryPage />} />
     </Route>
   )
 );

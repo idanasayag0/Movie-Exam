@@ -1,36 +1,31 @@
-import CardM from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import CardProps from '../../types/Movie/CardProps';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
-import BookmarkRemoveIcon from '@mui/icons-material/BookmarkRemove';
-import Badge from '@mui/material/Badge';
-import { useNavigate } from 'react-router-dom';
 import React, {useContext} from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import {Badge, CardActions, CardContent, CardMedia, Button, Typography, Card as CardM} from '@mui/material';
+import {ShoppingCart, BookmarkAdd, BookmarkRemove} from '@mui/icons-material';
+
+import CardProps from '../../types/Movie/CardProps';
 import { MovieContext } from '../MovieProvider';
+import { ORDER_PAGE_PATH, IMAGE_URL } from '../../constants';
 
 const Card = ({movie, openModal} :CardProps) =>{
     const {toggleFavorite, favorite} = useContext(MovieContext)
     const navigate = useNavigate()
 
     const goNavigate = ()=>{
-        navigate('/order/'+ movie.id)
+        navigate(ORDER_PAGE_PATH + movie.id)
     }
 
   return (
     <Badge color="error" badgeContent={movie.adult ? "18+" : 0}>
-    <CardM sx={{maxWidth: 350, height:430, display: "flex", flexDirection: "column", justifyContent: "space-between", boxShadow:"0 0 0.5rem rgba(0,0,0,0.2)" }}>
+    <CardM sx={{width: "100%", height:430, display: "flex", flexDirection: "column", justifyContent: "space-between", boxShadow:"0 0 0.5rem rgba(0,0,0,0.2)"}}>
       <CardMedia
         sx={{ height: 200, width: "100%", objectFit: "contain", aspectRatio: 3/2}}
-        image={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+        image={`${IMAGE_URL}${movie.backdrop_path}`}
         title={movie.title}
       />
       <CardContent sx={{flex: "1"}}>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography sx={{fontWeight: "bold"}} gutterBottom variant="h5" component="div">
         {movie.title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
@@ -38,8 +33,8 @@ const Card = ({movie, openModal} :CardProps) =>{
         </Typography>
       </CardContent>
       <CardActions >
-        <Button onClick={()=>{toggleFavorite(movie.id)}} size="small">{favorite.includes(movie.id)? <BookmarkRemoveIcon/> : <BookmarkAddIcon/>}</Button>
-        <Button onClick={goNavigate} size="small"><ShoppingCartIcon /></Button>
+        <Button onClick={()=>{toggleFavorite(movie.id)}} size="small">{favorite.includes(movie.id)? <BookmarkRemove/> : <BookmarkAdd/>}</Button>
+        <Button onClick={goNavigate} size="small"><ShoppingCart /></Button>
       </CardActions>
     </CardM>
     </Badge>

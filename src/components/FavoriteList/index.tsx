@@ -1,7 +1,8 @@
+import React, { useContext } from "react";
+
 import GenericGrid from "../common/GenericGrid";
 import FavoriteCard from "../FavoriteCard";
 import { MovieContext } from "../MovieProvider";
-import React, { useContext } from "react";
 
 
 const FavoriteList = () => {
