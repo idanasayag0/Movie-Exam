@@ -1,7 +1,7 @@
 import React, {useState, createContext, useEffect} from 'react'
+
 import Movie from '../../types/Movie/Movie'
 import axios from 'axios'
-
 type GlobalContent = {
   movies: Movie[],
   history: number[],
@@ -27,6 +27,7 @@ const MovieProvider = ({children}) => {
   const [history, setHistory] = useState<number[]>([])
   const [favorite, setFavorite] = useState<number[]>([])
   const [page, setPage] = useState(1)
+
 
   useEffect(() => {
     fetchMovies();

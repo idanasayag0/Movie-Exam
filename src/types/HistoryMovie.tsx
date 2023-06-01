@@ -1,7 +1,7 @@
 import Movie from "./Movie/Movie";
-type FavoriteMovie = {
+type HistoryMovie = {
     movie: Movie;
     purchase_date?: string;
 }
 
-export default FavoriteMovie
+export default HistoryMovie;

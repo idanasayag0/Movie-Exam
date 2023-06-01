@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useContext} from "react";
 import ReactPlayer from 'react-player';
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import axios from 'axios'
 
@@ -19,6 +19,14 @@ const OrderPage = () => {
   const [movie, setMovie] = useState<Movie>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [trailer, setTrailer] = useState<string>("");
+  const navigate = useNavigate();
+
+  const navigateTo = () => {
+    addToHistory(parseInt(id));
+    setTimeout(() => {
+      navigate('/')
+    },10000);
+  }
 
   const fetchMovie = async () => {
     try {
@@ -63,7 +71,7 @@ const OrderPage = () => {
                   </div>
               <Input sx={{width: "10%"}} defaultValue={1} slotProps={{input:{min:1}}}  placeholder="Type in here…" variant="outlined" color="primary" type="number" />         
               <div className={Style.buttons}>
-                <Button variant="outlined">Order</Button>
+                <Button onClick={navigateTo} variant="outlined">Order</Button>
               </div>
           </CardContent>
         </CardM>
