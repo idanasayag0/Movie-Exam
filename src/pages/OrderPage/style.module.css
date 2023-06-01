@@ -1,12 +1,7 @@
+* {
+  font-weight: bold;
+}
 .icons {
   display: flex;
   align-items: center;
-}
-
-.container {
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 50px;
 }
