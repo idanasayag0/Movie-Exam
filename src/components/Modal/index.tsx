@@ -4,10 +4,10 @@ import CloseIcon from '@mui/icons-material/Close';
 
 type ModalProps ={
   modalOpen: boolean;
-  closeModal: () => void;
+  closeModal?: () => void;
   modalTitle: string;
   modalOverview: string;
-  modalPoster: string;
+  modalPoster?: string;
 }
 const Modal = ({modalOpen, closeModal, modalTitle, modalOverview, modalPoster}:ModalProps) => {
 
@@ -21,18 +21,18 @@ const Modal = ({modalOpen, closeModal, modalTitle, modalOverview, modalPoster}:M
     <>
       {modalOpen && (
         <div className={css["modal"]}>
-          <div className={css["overlay"]} onClick={closeModal}></div>
+          <div className={css["overlay"]} onClick={closeModal ? closeModal : ()=>{}}></div>
           <div className={css["modal_content"]}>
-            <img className={css["posterImage"]} src={`https://image.tmdb.org/t/p/w500${modalPoster}`} alt="Movie Poster" width="200" />
+            {modalPoster && <img className={css["posterImage"]} src={`https://image.tmdb.org/t/p/w500${modalPoster}`} alt="Movie Poster" width="200" />}
             <div className={css["description"]}>
             <h2 className={css["modal_title"]}>{modalTitle}</h2>
             <p>
               {modalOverview}
             </p>
             </div>
-            <button className={css["close_modal"]} onClick={closeModal}>
+            {closeModal && <button className={css["close_modal"]} onClick={closeModal}>
               <CloseIcon />
-            </button>
+            </button>}
           </div>
         </div>
       )}

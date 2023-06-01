@@ -12,6 +12,7 @@ import { MovieContext } from "../../components/MovieProvider";
 import Loader from '../../components/common/Loader/Loader';
 import css from './style.module.css';
 import Movie from '../../types/Movie/Movie'
+import Modal from "../../components/Modal";
 
 const OrderPage = () => {
   const {id} = useParams<{id: string}>();
@@ -19,14 +20,31 @@ const OrderPage = () => {
   const [movie, setMovie] = useState<Movie>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [trailer, setTrailer] = useState<string>("");
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const navigateTo = () => {
-    const currentDate = new Date().toLocaleString().split(',')[0];
-    addToHistory(parseInt(id), currentDate);
+    const currentDate = new Date().toLocaleString().split(',')[0].split('.');
+    if(parseInt(currentDate[0]) < 10) currentDate[0] = '0' + currentDate[0];
+    if(parseInt(currentDate[1]) < 10) currentDate[1] = '0' + currentDate[1];
+
+    addToHistory(parseInt(id), currentDate.join('-'));
     setTimeout(() => {
       navigate('/')
-    },10000);
+    },3000);
+  }
+
+  const openModal = ()=>{
+    setModalOpen(true);
+  }
+
+  const closeModal = ()=>{
+    setModalOpen(false);
+  }
+
+  const handleClick = ()=>{
+    openModal();
+    navigateTo();
   }
 
   const fetchMovie = async () => {
@@ -70,10 +88,10 @@ const OrderPage = () => {
                   <div className={css["icons"]}>
                     <PeopleIcon sx={{marginRight: "0.5rem"}} /> {movie.adult ? "18+" : "For all family"}
                   </div>
-              
               <div className={css["buttons"]}>
               <Input sx={{width: "10%", marginRight: "1rem"}} defaultValue={1} slotProps={{input:{min:1}}}  placeholder="Type in here…" variant="outlined" color="primary" type="number" />         
-                <Button onClick={navigateTo} variant="outlined">Order</Button>
+                <Button onClick={handleClick} variant="outlined">Order</Button>
+                <Modal modalOpen={modalOpen} modalTitle="Thank you for purchase" modalOverview="You will move to home page in few seconds..."/>
               </div>
           </CardContent>
         </CardM>

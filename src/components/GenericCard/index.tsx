@@ -26,7 +26,7 @@ const GenericCard = ({ item, component: Component }: GenericMovieCardProps) => {
         }}
       >
         <Box sx={{ display: "flex" }}>
-          <CardContent sx={{ flex: "1 0 auto" }}>
+          <CardContent sx={{ flex: "1 0 auto", display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
             <Typography
               component="div"
               variant="h5"
