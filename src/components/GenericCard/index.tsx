@@ -5,8 +5,6 @@ import Typography from "@mui/material/Typography";
 import CardMedia from "@mui/material/CardMedia";
 import Badge from "@mui/material/Badge";
 
-import Style from "./style.module.css";
-
 import Movie from "../../types/Movie/Movie";
 
 type GenericMovieCardProps = {
@@ -32,7 +30,6 @@ const GenericCard = ({ item, component: Component }: GenericMovieCardProps) => {
             <Typography
               component="div"
               variant="h5"
-              className={Style.header}
               sx={{ fontWeight: "bold", maxWidth: 300 }}
             >
               {item.title}

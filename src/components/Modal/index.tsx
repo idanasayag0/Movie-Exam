@@ -1,5 +1,5 @@
 import React from "react";
-import Style from "./style.module.css";
+import css from "./style.module.css";
 import CloseIcon from '@mui/icons-material/Close';
 
 type ModalProps ={
@@ -20,17 +20,17 @@ const Modal = ({modalOpen, closeModal, modalTitle, modalOverview, modalPoster}:M
   return (
     <>
       {modalOpen && (
-        <div className={Style.modal}>
-          <div className={Style.overlay} onClick={closeModal}></div>
-          <div className={Style.modal_content}>
-            <img className={Style.posterImage} src={`https://image.tmdb.org/t/p/w500${modalPoster}`} alt="Movie Poster" width="200" />
-            <div className={Style.description}>
-            <h2 className={Style.modal_title}>{modalTitle}</h2>
+        <div className={css["modal"]}>
+          <div className={css["overlay"]} onClick={closeModal}></div>
+          <div className={css["modal_content"]}>
+            <img className={css["posterImage"]} src={`https://image.tmdb.org/t/p/w500${modalPoster}`} alt="Movie Poster" width="200" />
+            <div className={css["description"]}>
+            <h2 className={css["modal_title"]}>{modalTitle}</h2>
             <p>
               {modalOverview}
             </p>
             </div>
-            <button className={Style.close_modal} onClick={closeModal}>
+            <button className={css["close_modal"]} onClick={closeModal}>
               <CloseIcon />
             </button>
           </div>

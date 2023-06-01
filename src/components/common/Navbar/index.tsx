@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from "react-router-dom";
-import Styles from "./style.module.css";
+import css from "./style.module.css";
 
 type NavbarProps = {
   items: Item[];
@@ -15,13 +15,13 @@ const Navbar = ({ title, items }: NavbarProps) => {
   const { pathname } = useLocation();
 
   return (
-      <nav className={Styles.container}>
+      <nav className={css["container"]}>
         <h2>{title}</h2>
         {items.map(({ path, title }) => (
           <NavLink
             key={title}
             to={path}
-            className={path === pathname ? Styles.selectedlink : ""}
+            className={path === pathname ? css.selectedlink : ""}
           >
             {title}
           </NavLink>

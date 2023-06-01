@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
 
-import Style from "./style.module.css";
-
 import GenericGrid from "../common/GenericGrid";
 import HistoryCard from "../HistoryCard";
 import { MovieContext } from "../MovieProvider";
@@ -13,7 +11,7 @@ const HisotryList = () => {
 
   return (
     <>
-      <h1 className={Style.header}>History</h1>
+      <h1>History</h1>
       <GenericGrid items={historyMovies} component={HistoryCard} />
     </>
   );

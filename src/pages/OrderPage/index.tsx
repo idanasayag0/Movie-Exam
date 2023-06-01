@@ -10,7 +10,7 @@ import {Button, Container, Typography, CardMedia, Card as CardM} from '@mui/mate
 
 import { MovieContext } from "../../components/MovieProvider";
 import Loader from '../../components/common/Loader/Loader';
-import Style from './style.module.css';
+import css from './style.module.css';
 import Movie from '../../types/Movie/Movie'
 
 const OrderPage = () => {
@@ -65,12 +65,12 @@ const OrderPage = () => {
                   <Typography variant="subtitle1" color="text.secondary" component="div">
                     {movie.overview}
                   </Typography>
-                  <p className={Style.release_date}>Release date: {movie.release_date}</p>
-                  <div className={Style.icons}>
+                  <p className={css["release_date"]}>Release date: {movie.release_date}</p>
+                  <div className={css["icons"]}>
                     <PeopleIcon sx={{marginRight: "0.5rem"}} /> {movie.adult ? "18+" : "For all family"}
                   </div>
               <Input sx={{width: "10%"}} defaultValue={1} slotProps={{input:{min:1}}}  placeholder="Type in here…" variant="outlined" color="primary" type="number" />         
-              <div className={Style.buttons}>
+              <div className={css["buttons"]}>
                 <Button onClick={navigateTo} variant="outlined">Order</Button>
               </div>
           </CardContent>
