@@ -54,7 +54,7 @@ const MoviesList = () => {
     <Loader isLoading={isLoading} > 
       {modalOpen && ( <Modal modalOpen={modalOpen} closeModal={closeModal} modalTitle={modalTitle} modalOverview={modalOverview} modalPoster={modalPoster} /> )}
       <Grid container spacing={2} sx={{padding: "0 2rem"}}>
-          {movies.map((movie) => <Grid item xs={12} sm={6} md={4} lg={3} xl={2}><Card key={movie.id} movie={movie}  openModal={openModal}/></Grid>)}
+          {movies.map((movie) => <Grid item xs={12} sm={6} md={5} lg={4} xl={3}><Card key={movie.id} movie={movie}  openModal={openModal}/></Grid>)}
       </Grid>
     </Loader>
     </>
